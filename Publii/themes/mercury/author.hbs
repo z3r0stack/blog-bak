@@ -1,0 +1,122 @@
+{{> head}}
+<body>
+    {{{@bodyCustomCode}}}
+    <div class="container">
+        <header class="js-top">
+            <a class="logo" href="{{@website.url}}">
+                {{#if @website.logo}}
+                    <img src="{{@website.logo}}" alt="{{@website.name}}">
+                {{else}}
+                    {{@website.name}}
+                {{/if}}
+            </a>
+            {{> menu menus.mainMenu}}
+        </header>
+        <main>
+            <div class="hero u-wrapper">
+                {{#author}}
+                    {{#if avatar}}
+                        <img src="{{avatar}}" alt="{{name}}" class="author-page__avatar">
+                    {{/if}}
+                    <h1>{{name}}
+                        <sup>({{postsNumber}})</sup>
+                    </h1>
+                    {{#if description}}
+                        <p class="author-page__info">
+                            {{description}}
+                        </p>
+                    {{/if}}
+                {{/author}}
+            </div>
+            {{#checkIf @config.custom.cardsLayout '==' "true" }}
+                <div
+                    class="{{@config.custom.gridType}} {{@config.custom.gridType}}{{@config.custom.layoutFrontpage}}">
+                    {{#each posts}}
+                        <div class="card{{#isFeatured}} card--compact card--featured{{/isFeatured}}">
+                            <a href="{{url}}">
+                                {{#featuredImage}}
+                                    {{#if @config.custom.lazyLoad}}
+                                        <div class="card__header">
+                                            <img
+                                                class="lazyload blur-up"
+                                                src="{{urlXs}}"
+                                                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                                data-srcset="{{srcset.cards}}"
+                                                data-sizes="auto"
+                                                data-expand="50"
+                                                alt="{{alt}}">
+                                        </div>
+                                    {{else}}
+                                        <header class="card__header">
+                                            <img
+                                                src="{{url}}"
+                                                sizes="{{sizes.cards}}"
+                                                srcset="{{srcset.cards}}"
+                                                alt="{{alt}}">
+                                        </header>
+                                    {{/if}}
+                                {{/featuredImage}}
+                                <div class="card__body card__body--compact">
+                                    <div class="card__body__wrap card__body__wrap--compact">
+                                        <h2>
+                                            {{title}}
+                                        </h2>
+                                        <p>
+                                            <time datetime="{{date createdAt 'YYYY-MM-DDTHH:mm'}}">
+                                                {{date createdAt @config.custom.formatDate}}
+                                            </time>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {{/each}}
+                </div>
+            {{else}}
+                <div
+                    class="{{@config.custom.gridType}} {{@config.custom.gridType}}{{@config.custom.layoutFrontpage}}">
+                    {{#each posts}}
+                        <div class="card{{#isFeatured}} card--featured{{/isFeatured}}">
+                            <a href="{{url}}">
+                                {{#featuredImage}}
+                                    {{#if @config.custom.lazyLoad}}
+                                        <div class="card__header">
+                                            <img
+                                                class="lazyload blur-up"
+                                                src="{{urlXs}}"
+                                                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                                data-srcset="{{srcset.cards}}"
+                                                data-sizes="auto"
+                                                data-expand="50"
+                                                alt="{{alt}}">
+                                        </div>
+                                    {{else}}
+                                        <header class="card__header">
+                                            <img
+                                                src="{{url}}"
+                                                sizes="{{sizes.cards}}"
+                                                srcset="{{srcset.cards}}"
+                                                alt="{{alt}}">
+                                        </header>
+                                    {{/if}}
+                                {{/featuredImage}}
+                                <div class="card__body">
+                                    <div class="card__body__wrap">
+                                        <h2>
+                                            {{title}}
+                                        </h2>
+                                        <p>
+                                            <time datetime="{{date createdAt 'YYYY-MM-DDTHH:mm'}}">
+                                                {{date createdAt @config.custom.formatDate}}
+                                            </time>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {{/each}}
+                </div>
+            {{/checkIf}}
+            {{> pagination}}
+        </main>
+        {{> footer}}
