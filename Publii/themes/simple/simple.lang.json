@@ -32,5 +32,14 @@
 		"comments": "Comments",
 		"previousPost": "Previous Post",
 		"nextPost": "Next Post"
-	}
+	},
+	"error": {
+		"404": "404",
+		"message1": "Ooops, something went wrong",
+		"message2": "Unfortunately, the page you've requested cannot be displayed"
+	},
+	"search": {
+		"placeholder": "search...",
+        "title": "Search" 
+    }
 }

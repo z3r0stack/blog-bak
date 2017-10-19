@@ -1,66 +1,75 @@
 {{> head}}
-<body>
-	{{{@bodyCustomCode}}}
-	<div class="container">
-		{{> menu menus.mainMenu}}
-		<div class="content js-content">
-			<header>
-				<div class="top">
-					<a class="logo" href="{{@website.url}}">
-			          {{#if @website.logo}}
-				         <img src="{{@website.logo}}" alt="{{@website.name}}">			
-			          {{else}}	
-				        {{@website.name}}			
-			          {{/if}}
-					</a>
-				</div>
-				<div class="top top--right is-sticky">
-					<button class="menu-toggle js-menu-toggle">{{ translate 'shared.label' }}</button>
-				</div>
-			</header>
-			<main class="main">
-				<section class="main__left">
-				  {{#if @config.custom.uploadHero}}
-					<div class="hero">
-						<img src="{{@config.custom.uploadHero}}" alt="{{@config.custom.uploadHeroAlt}}" {{#if @config.custom.uploadHeroTitle}} title="{{@config.custom.uploadHeroTitle}}" {{/if}}>
-					</div>
-				  {{/if}}
-					<header>
-						{{{@config.custom.textHero}}}
-					</header>
-				</section>
-				<div class="main__right category author">
-					<div>
-						<div class="author__bio">
-						 {{#author}}
-						  {{#if avatar}}
-							<img src="{{avatar}}" class="author__thumb" alt="{{name}}">
-						  {{/if}}	
-							 <h3>{{name}} <sup>({{postsNumber}})</sup></h3>	
-						  {{#if description}}
-						   <p>
-							{{description}}
-						   </p>
-						  {{/if}} 
-						{{/author}}
-						</div>						
-						{{#each posts}}
-						<article>
-							<header>
-								<h2>
-									<a href="{{url}}"> {{title}} </a>
-								</h2>
-								<p class="post__meta">
-									<time datetime="{{date createdAt 'YYYY-MM-DDTHH:mm'}}"> {{date createdAt @config.custom.formatDate}} </time>
-								</p>
-							</header>
-							{{#if excerpt}}
-					          <p>{{{excerpt}}}</p>
-					        {{/if}}
-						</article>
-					  {{/each}} 
-				    {{> pagination}}
-					</div>
-				</div>
-			</main>
-		{{> footer}}
+<div class="container">
+    {{> menu menus.mainMenu}}
+    <div class="content js-content">
+        <header>
+            <div class="top">
+                <a class="logo" href="{{@website.url}}">
+                    {{#if @website.logo}}
+                        <img src="{{@website.logo}}" alt="{{@website.name}}">
+                    {{else}}
+                        {{@website.name}}
+                    {{/if}}
+                </a>
+            </div>
+            <div class="top top--right is-sticky">
+                <button class="menu-toggle js-menu-toggle">{{ translate 'shared.label' }}</button>
+            </div>
+        </header>
+        <main class="main">
+            <section class="main__left">
+                {{#if @config.custom.uploadHero}}
+                    <div class="hero">
+                        <img
+                            src="{{@config.custom.uploadHero}}"
+                            alt="{{@config.custom.uploadHeroAlt}}"
+                            {{#if @config.custom.uploadHeroTitle}}
+                            title="{{@config.custom.uploadHeroTitle}}"
+                            {{/if}}>
+                    </div>
+                {{/if}}
+                <header>
+                    {{{@config.custom.textHero}}}
+                </header>
+            </section>
+            <div class="main__right category author">
+                <div>
+                    <div class="author__bio">
+                        {{#author}}
+                            {{#if avatar}}
+                                <img src="{{avatar}}" class="author__thumb" alt="{{name}}">
+                            {{/if}}
+                            <h3>{{name}}
+                                <sup>({{postsNumber}})</sup>
+                            </h3>
+                            {{#if description}}
+                                <p>
+                                    {{description}}
+                                </p>
+                            {{/if}}
+                        {{/author}}
+                    </div>
+                    {{#each posts}}
+                        <article>
+                            <header>
+                                <h2>
+                                    <a href="{{url}}">
+                                        {{title}}
+                                    </a>
+                                </h2>
+                                <p class="post__meta">
+                                    <time datetime="{{date createdAt 'YYYY-MM-DDTHH:mm'}}">
+                                        {{date createdAt @config.custom.formatDate}}
+                                    </time>
+                                </p>
+                            </header>
+                            {{#if excerpt}}
+                                <p>{{{excerpt}}}</p>
+                            {{/if}}
+                        </article>
+                    {{/each}}
+                    {{> pagination}}
+                </div>
+            </div>
+        </main>
+        {{> footer}}

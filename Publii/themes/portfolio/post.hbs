@@ -1,6 +1,6 @@
 {{> head}}
 <body>
-	{{{@bodyCustomCode}}}
+    {{{@bodyCustomCode}}}
     <div class="container">
         <header class="js-top is-sticky">
             <a class="logo" href="{{@website.url}}">
@@ -10,7 +10,10 @@
                     {{@website.name}}
                 {{/if}}
             </a>
-            {{> menu menus.mainMenu}}
+            <div class="top">
+                {{> menu menus.mainMenu}}
+                {{> search}}
+            </div>
         </header>
         <main class="u-cutting">
             {{#post}}
@@ -71,7 +74,7 @@
                                     {{/author}}
                                 {{/if}}
                                 {{#if @config.post.displayDate}}
-                                    <br />{{ translate 'post.publishedOn' }}
+                                    <br/>{{ translate 'post.publishedOn' }}
                                     <time datetime="{{date createdAt 'YYYY-MM-DDTHH:mm'}}">
                                         {{date createdAt @config.custom.formatDate}}
                                     </time>
@@ -137,7 +140,10 @@
                         <nav class="post-nav">
                             {{#../previousSimilarPost}}
                                 <div class="post-nav__prev">
-                                    <a href="{{url}}" rel="prev" class="post-nav__link {{#if @config.post.navigationStyle}}post-nav__link--light{{/if}}">
+                                    <a
+                                        href="{{url}}"
+                                        rel="prev"
+                                        class="post-nav__link {{#if @config.post.navigationStyle}}post-nav__link--light{{/if}}">
                                         {{ translate 'post.previousPost' }}
                                         <h5>
                                             {{title}}
@@ -147,7 +153,10 @@
                             {{/../previousSimilarPost}}
                             {{#../nextSimilarPost}}
                                 <div class="post-nav__next">
-                                    <a href="{{url}}" rel="next" class="post-nav__link {{#if @config.post.navigationStyle}}post-nav__link--light{{/if}}">
+                                    <a
+                                        href="{{url}}"
+                                        rel="next"
+                                        class="post-nav__link {{#if @config.post.navigationStyle}}post-nav__link--light{{/if}}">
                                         {{ translate 'post.nextPost' }}
                                         <h5>
                                             {{title}}
@@ -159,11 +168,20 @@
                     {{/checkIfAny}}
                 {{/if}}
             {{/post}}
-            {{#if @config.post.displayComments}}
+            {{#checkIfAny @config.post.displayComments @customHTML.afterPost}}
                 <div class="tank">
-					<div class="tank__inner {{#if @config.custom.postAside}}tank__inner--with-aside{{/if}}">
-                    {{> disqus}}</div>
+                    <div
+                        class="tank__inner {{#if @config.custom.postAside}}tank__inner--with-aside{{/if}}">
+                        {{#if @config.post.displayComments}}
+                            {{> disqus}}</div>
+                    {{/if}}
+                    {{#if @customHTML.afterPost}}
+                        <div class="banner banner--after-post">
+                            {{@customHTML.afterPost}}
+                        </div>
+                    {{/if}}
                 </div>
-            {{/if}}
+            {{/checkIfAny}}
+
         </main>
         {{> footer}}

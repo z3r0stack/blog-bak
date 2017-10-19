@@ -42,5 +42,14 @@
 			"1": "Post",
 			"default": "Posts"
 		}
-	}
+	},
+	"error": {
+		"404": "404",
+		"message": "Ooops, something went wrong!"
+	},	
+	"search": {
+		"placeholder": "search...",
+        "title": "Search",
+		"close": "Close"
+    }
 }

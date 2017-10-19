@@ -1,0 +1,46 @@
+{{> head}}
+{{> top}}
+<main>
+    <section class="hero">
+        {{#if @config.custom.uploadHero}}
+            <div class="hero__wrap">
+                <img
+                    src="{{@config.custom.uploadHero}}"
+                    {{responsiveSrcSet @config.custom.uploadHero}}
+                    {{responsiveSizes}}
+                    alt="{{@config.custom.uploadHeroAlt}}"
+                    {{#if @config.custom.uploadHeroTitle}}
+                    title="{{@config.custom.uploadHeroTitle}}"
+                    {{/if}}>
+            </div>
+        {{/if}}
+        <header class="hero__text search">
+            <h1>
+                {{ translate 'search.title' }}
+            </h1>
+            <form action="{{@website.searchUrl}}" class="search__form">
+                <input
+                    type="search"
+                    name="{{@config.custom.searchParam}}"
+                    placeholder="{{ translate 'search.placeholder' }}"
+                    class="search__input"/>
+            </form>
+        </header>
+    </section>
+
+    <script>
+        (function () {
+            var cx = '{{@config.custom.searchId}}';
+            var gcse = document.createElement('script');
+            gcse.type  = 'text/javascript';
+            gcse.async = true;
+            gcse.src   = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+        })();
+    </script>
+
+    <gcse:searchresults-only></gcse:searchresults-only>
+
+</main>
+{{> footer}}

@@ -1,13 +1,23 @@
 {
 	"name": "Tattoo",
-	"version": "1.4.1.0",
+	"version": "1.5.3.0",
 	"author": "TidyCustoms <https://tidycustoms.net/>",
 	"menus": {
 		"mainMenu": "Main menu"
 	},
 	"renderer": {
-        "relatedPostsNumber": 3
-    },
+		"relatedPostsNumber": 3,
+		"renderRelatedPosts": true,
+		"renderSimilarPosts": false,
+		"renderPrevNextPosts": true,
+		"createContentStructure": false,
+		"createSearchPage": true,
+		"create404page": true,
+		"customHTML": {
+			"beforePost": "Before every post",
+			"afterPost": "After every post"
+		}
+	},
 	"config": [
 
 		{
@@ -134,7 +144,7 @@
 					"label": "4",
 					"value": "category--layout-3"
 				}]
-		},		
+		},
 
 		{
 			"name": "primaryColor",
@@ -193,7 +203,7 @@
 			"min": 1,
 			"max": 3,
 			"step": 0.05
-		},		
+		},
 		{
 			"name": "linkColorMenu",
 			"label": "Menu link color",
@@ -249,6 +259,39 @@
 				"value": "custom"
             }]
         },
+
+		{
+			"name": "search",
+			"label": "Search",
+			"group": "Search",
+			"value": true,
+			"type": "checkbox"
+        },
+		{
+			"name": "searchId",
+			"group": "Search",
+			"label": "Google Custom Search Id",
+			"note": "A search ID is required for search functionality, which uses Google Custom Search. Learn how to configure it here: <a href='https://getpublii.com/docs/search-configuration.html' target='_blank'>https://www.getpublii.com/docs/...</a>",
+			"value": "",
+			"type": "text",
+			"dependencies": [{
+				"field": "search",
+				"value": "true"
+            }]
+        },
+		{
+			"name": "searchParam",
+			"group": "Search",
+			"label": "Search parameter",
+			"note": "You can change the default \"q\" search parameter if desired; this is recommended only for advanced users.",
+			"value": "q",
+			"type": "text",
+			"dependencies": [{
+				"field": "search",
+				"value": "true"
+            }]
+        },
+
 		{
 			"name": "widthHero",
 			"label": "Hero section width",
@@ -259,7 +302,7 @@
 				{
 					"label": "Full",
 					"value": "hero--full"
-				},				
+				},
 				{
 					"label": "Narrow",
 					"value": "hero--narrow"
@@ -451,7 +494,7 @@
 			"max": 360,
 			"step": 5
 		},
-		
+
 		{
 			"name": "cards-separator",
 			"type": "separator",
@@ -467,7 +510,7 @@
 			"value": true,
 			"type": "checkbox"
 		},
-		
+
 		{
 			"name": "shareFacebook",
 			"group": "Share Buttons",
@@ -484,10 +527,10 @@
 		},
 		{
 			"name": "shareTwitterName",
-			"group": "Share Buttons",			
-			"note": "Enter your Twitter account's handle here; it will be used when the Twitter share button is clicked on your site e.g. 'via @TwitterHandle'. If left blank, the default username of @SiteName will be used",	
+			"group": "Share Buttons",
+			"note": "Enter your Twitter account's handle here; it will be used when the Twitter share button is clicked on your site e.g. 'via @TwitterHandle'. If left blank, the default username of @SiteName will be used",
 			"value": "",
-			"type": "text",		
+			"type": "text",
 			"dependencies": [{
 				"field": "shareTwitter",
 				"value": "true"
@@ -528,7 +571,7 @@
 			"value": true,
 			"type": "checkbox"
 		},
-		
+
 		{
 			"name": "commentDisqusShortname",
 			"label": "Disqus shortname",
@@ -538,7 +581,7 @@
 			"value": "",
 			"type": "text"
 		},
-		
+
 		{
 			"name": "copyrightText",
 			"label": "Copyright text",
@@ -649,7 +692,7 @@
 				"value": "true"
 			}]
 		},
-				
+
 		{
 			"name": "bannerCookie",
 			"group": "Cookie banner",
@@ -749,7 +792,24 @@
 
 	],
 	"postConfig": [
-		
+		{
+			"name": "displayCategoryName",
+			"label": "Display category name",
+			"note": "Display the name of the first tag from all of them assigned to the article.",
+			"value": 1,
+			"type": "select",
+			"options": [
+				{
+					"label": "Enabled",
+					"value": 1
+                },
+				{
+					"label": "Disabled",
+					"value": 0
+                }
+            ]
+        },
+
 		{
 			"name": "displayAuthor",
 			"label": "Display author name",
@@ -781,7 +841,7 @@
 					"value": 0
                 }
             ]
-        },	
+        },
 		{
 			"name": "displayLastUpdatedDate",
 			"label": "Display last updated date",
@@ -813,7 +873,7 @@
 					"value": 0
                 }
             ]
-        },		
+        },
 		{
 			"name": "displayTags",
 			"label": "Display tags",
@@ -862,7 +922,7 @@
                 }
             ]
         },
-		
+
 		{
 			"name": "displayRelatedPosts",
 			"label": "Display related posts",

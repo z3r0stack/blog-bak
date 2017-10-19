@@ -189,4 +189,20 @@
             return !!popup;
         }
     });
+	
+	
+	// Search overlay
+	$(function () {
+		$('.search__btn').click(function () {
+			$('.search__overlay').addClass('expanded');
+			setTimeout(function () {
+				$('.search__input').focus();
+			}, 50);
+		});
+
+		$('.search__close').click(function () {
+			$('.search__overlay').removeClass('expanded');
+		});
+	});
+	
 })(jQuery);

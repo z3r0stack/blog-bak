@@ -47,5 +47,14 @@
 	"newsletter": {
 		"subscribe": "Subscribe",
 		"description": "Get the latest QF news, updates and more delivered<br /> directly to your email inbox"
-	}
+	},
+	"error": {
+		"404": "404",
+		"message": " The page you were looking for appears to have been moved, deleted or does not exist. You could go back to where you were or head straight to our home page."
+	},
+	"search": {
+		"placeholder": "search...",
+        "title": "Search",
+		"close": "Close"
+    }
 }

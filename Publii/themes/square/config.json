@@ -1,10 +1,20 @@
 {
 	"name": "Square",
-	"version": "1.3.1.0",
+	"version": "1.4.2.0",
 	"author": "TidyCustoms <https://tidycustoms.net/>",
 	"menus": {
 		"mainMenu": "Main menu"
 	},
+	"renderer": {
+         "create404page": true,
+		 "renderRelatedPosts": false,
+		 "renderSimilarPosts": false,
+		 "renderPrevNextPosts": false,
+		 "createContentStructure": false,
+		"customHTML": {             
+             "afterPost": "After every post"			 
+         }
+    },
 	"config": [
 
 		{
@@ -74,6 +84,20 @@
 			"label": "Link hover color",
 			"group": "Colors",
 			"value": "#a6752e",
+			"type": "colorpicker"
+		},
+		{
+			"name": "separator",
+			"type": "separator",
+			"label": "",
+			"group": "Colors",
+			"size": "small"
+		},
+		{
+			"name": "logoColor",
+			"label": "Logo color",
+			"group": "Colors",
+			"value": "#ffffff",
 			"type": "colorpicker"
 		},
 
@@ -264,6 +288,20 @@
 			"group": "Hero section",
 			"value": "<h1>Welcome to my blog</h1><p>I'am Front End Developer and UI Designer</p>",
 			"type": "wysiwyg"
+		},
+		{
+			"name": "textHeroColor",
+			"label": "Hero text color",
+			"group": "Hero section",
+			"value": "#ffffff",
+			"type": "colorpicker"
+		},
+		{
+			"name": "borderHero",
+			"label": "Border color (below hero text)",
+			"group": "Hero section",
+			"value": "rgba(255, 255, 255, 0.7",
+			"type": "colorpicker"
 		},
 
 		{

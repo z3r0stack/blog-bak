@@ -8,18 +8,18 @@ var generateOverride = function (params) {
 if(params.minFontSize !== '1' || params.maxFontSize !== '1.3') {
         output += `
 html {
-  font-size: ${params.minFontSize}rem;
+        font-size: ${params.minFontSize}rem;
 }
 
 @media screen and (min-width: 20rem) {
   html {
-    font-size: calc(${params.minFontSize}rem + (${params.maxFontSize} - ${params.minFontSize}) * ((100vw - 20rem) / 220));
+        font-size: calc(${params.minFontSize}rem + (${params.maxFontSize} - ${params.minFontSize}) * ((100vw - 20rem) / 220));
   }
 }
 
 @media screen and (min-width: 240rem) {
   html { 
-    font-size: ${params.maxFontSize}rem;
+        font-size: ${params.maxFontSize}rem;
     }
   }`;    	 
 }
@@ -94,13 +94,13 @@ select[multiple]:focus {
 }
 @media all and (max-width: 37.4375em) {
   .cookie-bar__close {   
-    border-color: ${params.primaryColor};
-    color: ${params.primaryColor};
+        border-color: ${params.primaryColor};
+        color: ${params.primaryColor};
   }
 }
 @media all and (min-width: 37.5em) {
   .cookie-bar__close:hover:before, .cookie-bar__close:hover:after {
-    background: #02bb80;
+        background: #02bb80;
   }
   }`;    	 
 }
@@ -112,20 +112,23 @@ if(params.pageWidth !== '48rem') {
   }
 @media all and (min-width: 56.25em) {
   .container > header.is-sticky {
-    max-width: ${params.pageWidth}; 
+        max-width: ${params.pageWidth}; 
   }
+}
+.search__input {  
+        width: ${params.pageWidth};  
 }`;    	 
 }	
 	
 if(params.backgroundMenu !== '#ffffff') {
         output += `
 .is-opened > ul {
-   background: ${params.backgroundMenu}; 
+        background: ${params.backgroundMenu}; 
 }
 @media all and (min-width: 56.25em) {
 .navbar__submenu,
 .navbar__submenu:after {
-    background: ${params.backgroundMenu};   
+        background: ${params.backgroundMenu};   
   }
   }`;    	 
 }
@@ -143,7 +146,7 @@ if(params.linkColorMenu !== '#111111') {
 .navbar__menu li,
 .navbar__menu li a,
 .navbar__menu li span {
-   color: ${params.linkColorMenu}; 
+        color: ${params.linkColorMenu}; 
   }`;    	 
 }
 	
@@ -151,32 +154,32 @@ if(params.linkHoverColorMenu !== '#02bb80') {
         output += `
 .navbar__menu li a:hover:not(span),
 .navbar__menu li span:hover:not(span) {
-   color: ${params.linkHoverColorMenu}; 
+        color: ${params.linkHoverColorMenu}; 
   }`;    	 
 }
 
 if(params.imageEffectsHover) {
    if(params.imageFilterHover !== '#saturate' || params.imageFilterHoverValue !== '2' || params.imageZoom !=='1.05') {
         output += ` 
-    .card__image img:hover {
-      -webkit-filter: ${params.imageFilterHover}(${params.imageFilterHoverValue});
-       filter: ${params.imageFilterHover}(${params.imageFilterHoverValue});
+.card__image img:hover {
+        -webkit-filter: ${params.imageFilterHover}(${params.imageFilterHoverValue});
+        filter: ${params.imageFilterHover}(${params.imageFilterHoverValue});
         -webkit-transform: scale(${params.imageZoom});
-         -ms-transform: scale(${params.imageZoom});
-          transform: scale(${params.imageZoom});
+        -ms-transform: scale(${params.imageZoom});
+        transform: scale(${params.imageZoom});
     }`;    	 
   }
 }	
 if(params.lazyLoad === true) {
         output += `	
 .blur-up {
-  -webkit-filter: blur(5px);
-          filter: blur(5px);
-  transition: filter 400ms, -webkit-filter 400ms;
+        -webkit-filter: blur(5px);
+        filter: blur(5px);
+        transition: filter 400ms, -webkit-filter 400ms;
 }
 .blur-up.lazyloaded {
-  -webkit-filter: blur(0);
-          filter: blur(0);
+         -webkit-filter: blur(0);
+        filter: blur(0);
   }`;    	 
 }	
  return output;

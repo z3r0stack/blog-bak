@@ -8,18 +8,18 @@ var generateOverride = function (params) {
   if(params.minFontSize !== '1' || params.maxFontSize !== '1.5') {
         output += `
 html {
-  font-size: ${params.minFontSize}rem;
+        font-size: ${params.minFontSize}rem;
 }
 
 @media screen and (min-width: 20rem) {
   html {
-    font-size: calc(${params.minFontSize}rem + (${params.maxFontSize} - ${params.minFontSize}) * ((100vw - 20rem) / 220));
+        font-size: calc(${params.minFontSize}rem + (${params.maxFontSize} - ${params.minFontSize}) * ((100vw - 20rem) / 220));
   }
 }
 
 @media screen and (min-width: 240rem) {
   html { 
-    font-size: ${params.maxFontSize}rem;
+        font-size: ${params.maxFontSize}rem;
     }
   }`;    	 
 }
@@ -30,7 +30,14 @@ body {
         color: ${params.textColor};  
   }`;   
 }
- if(params.headingColor !== '#000000') {
+if(params.logoColor !== '#ffffff') {
+        output += `
+.logo {
+        color: ${params.logoColor} !important;
+  }`;    	 
+}
+
+if(params.headingColor !== '#000000') {
         output += `
 h2,
 h3,
@@ -121,39 +128,58 @@ button:focus {
 if(params.backgroundMenu !== '#262626') {
         output += `
 .menu {
-   background: ${params.backgroundMenu}; 
+        background: ${params.backgroundMenu}; 
   }`;    	 
 }
 if(params.linkColorMenu !== 'gray') {
         output += `
 .menu > ul li,
 .menu > ul li > a {
-   color: ${params.linkColorMenu}; 
+        color: ${params.linkColorMenu}; 
   }`;    	 
 }
 if(params.linkHoverColorMenu !== '#ffffff') {
         output += `
 .menu > ul li > a:hover {
-   color: ${params.linkHoverColorMenu}; 
+        color: ${params.linkHoverColorMenu}; 
   }`;    	 
 }
 if(params.heightHero !== '40vh') {
         output += `
 .main__left,
 .hero > img {
-   min-height: ${params.heightHero}
+        min-height: ${params.heightHero}
+  }`;    	 
+}
+if(params.textHeroColor !== '#ffffff') {
+        output += `
+.main__left > header {
+        color: ${params.textHeroColor};
+}
+.main__left > header a,
+.main__left > header a:hover,
+.main__left > header a:active {
+        color: ${params.textHeroColor}; 
+  }`;    	 
+}	
+if(params.borderHero !== 'rgba(255, 255, 255, 0.7') {
+        output += `
+@media all and (min-width: 56.25em) {
+    .top {
+        border-bottom: 1px solid ${params.borderHero};
+    }
   }`;    	 
 }
 if(params.backgroundHero !== '#000000') {
         output += `
 .main__left {
-  background: ${params.backgroundHero};
+        background: ${params.backgroundHero};
   }`;    	 
 }
 if(params.opacityHero !== '0.8') {
         output += `
 .hero > img  {
-   opacity: ${params.opacityHero}; 
+        opacity: ${params.opacityHero}; 
   }`;    	 
 }
 if(params.imageEffects) {	

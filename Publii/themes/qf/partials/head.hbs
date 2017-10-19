@@ -12,7 +12,7 @@
         {{metaDescription}}
         {{metaRobots}}
         {{canonicalLink}}
-        <link rel="amphtml" href="{{@website.ampUrl}}">
+        {{ampLink}}
         {{feedLink}}
         {{socialMetaTags}}
         {{#if @pagination}}
@@ -37,4 +37,6 @@
 		</style>
         {{{@headCustomCode}}}
     </head>
+	<body>
+        {{{@bodyCustomCode}}}
 

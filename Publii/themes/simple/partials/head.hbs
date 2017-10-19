@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{#if title}}
-    <title>{{title}}</title>
-    {{else}}
-    <title>{{@website.name}}</title>
-    {{/if}}
-    {{metaDescription}}
-	{{metaRobots}}
-	{{canonicalLink}}
-	<link rel="amphtml" href="{{@website.ampUrl}}">
-	{{feedLink}}
-    {{socialMetaTags}}	
-    {{#if @pagination}}
-	{{#if @pagination.previousPage}}
-	<link rel="prev" href="{{@pagination.previousPageUrl }}">
-	{{/if}}
-	{{#if @pagination.nextPage}}
-	<link rel="next" href="{{@pagination.nextPageUrl }}">
-	{{/if}}
-    {{/if}}
-    <link rel="stylesheet" href="{{css "style.css" }}">
-	{{jsonLD}}
-	{{#if @config.custom.lazyLoad}}
-	<script async src="{{js "lazysizes.min.js"}}"></script>
-	{{/if}}
-	{{{@headCustomCode}}}
-</head>
-
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{#if title}}
+            <title>{{title}}</title>
+        {{else}}
+            <title>{{@website.name}}</title>
+        {{/if}}
+        {{metaDescription}}
+        {{metaRobots}}
+        {{canonicalLink}}
+        {{ampLink}}
+        {{feedLink}}
+        {{socialMetaTags}}
+        {{#if @pagination}}
+            {{#if @pagination.previousPage}}
+                <link rel="prev" href="{{@pagination.previousPageUrl }}">
+            {{/if}}
+            {{#if @pagination.nextPage}}
+                <link rel="next" href="{{@pagination.nextPageUrl }}">
+            {{/if}}
+        {{/if}}
+        <link rel="stylesheet" href="{{css "style.css" }}">
+        {{jsonLD}}
+        {{#if @config.custom.lazyLoad}}
+        	<script async src="{{js "lazysizes.min.js"}}"></script>
+        {{/if}}
+        {{#if @config.custom.search}}
+            <style>
+                .top__search [type=search] {
+                    background-image: url({{@website.assetsUrl}}/svg/search.svg);
+                }
+            </style>
+        {{/if}}
+        {{{@headCustomCode}}}
+    </head>
+    <body>
+        {{{@bodyCustomCode}}}

@@ -192,12 +192,13 @@ if(params.textColorHero !== 'rgba(255, 255, 255, 0.75)') {
 if(params.imageEffects) {	
    if(params.imageFilter !== '#saturate' || params.imageFilterValue !== '0') {
         output += ` 
-    .hero__wrap > img {
+.hero__wrap > img {
      -webkit-filter: ${params.imageFilter}(${params.imageFilterValue});
        filter: ${params.imageFilter}(${params.imageFilterValue});
     }`;    	 
   }
 }
+	
 if(params.lazyLoad === true) {
         output += `	
 .blur-up {

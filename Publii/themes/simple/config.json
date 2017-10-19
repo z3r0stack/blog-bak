@@ -1,12 +1,21 @@
 {
 	"name": "Simple",
-	"version": "1.4.1.0",
+	"version": "1.5.3.0",
 	"author": "TidyCustoms <https://tidycustoms.net/>",
 	"menus": {
 		"mainMenu": "Main menu"
 	},
-	"renderer": {
-        "relatedPostsNumber": 3
+	 "renderer": {
+         "relatedPostsNumber": 3,
+		 "renderRelatedPosts": true,
+         "renderSimilarPosts": false,
+         "renderPrevNextPosts": true,
+         "createContentStructure": false,
+		 "createSearchPage": true,
+         "create404page": true,
+		 "customHTML": {             
+             "afterPost": "After every post"			 
+         }
     },
 	"config": [
 
@@ -58,7 +67,7 @@
 			"type": "separator",
 			"label": "Frontpage",
 			"group": "Layout",
-			"size": "big"
+			"size": "small"
 		},
 		{
 			"name": "frontAuthor",
@@ -94,7 +103,7 @@
 			"type": "separator",
 			"label": "Tag Page",
 			"group": "Layout",
-			"size": "big"
+			"size": "small"
 		},
 		{
 			"name": "tagAuthor",
@@ -130,7 +139,7 @@
 			"type": "separator",
 			"label": "Author page",
 			"group": "Layout",
-			"size": "big"
+			"size": "small"
 		},
 		{
 			"name": "authorAuthor",
@@ -278,6 +287,38 @@
 			"dependencies": [{
 				"field": "submenu",
 				"value": "custom"
+            }]
+        },
+		
+		{
+            "name": "search",
+            "label": "Search",
+            "group": "Search",           
+            "value": true,
+            "type": "checkbox"
+        },		
+		{
+            "name": "searchId",
+            "group": "Search",
+            "label": "Google Custom Search Id",
+            "note": "A search ID is required for search functionality, which uses Google Custom Search. Learn how to configure it here: <a href='https://getpublii.com/docs/search-configuration.html' target='_blank'>https://www.getpublii.com/docs/...</a>",
+            "value": "",
+            "type": "text",
+			"dependencies": [{
+				"field": "search",
+				"value": "true"
+            }]
+        },
+        {
+            "name": "searchParam",
+            "group": "Search",
+            "label": "Search parameter",
+            "note": "You can change the default \"q\" search parameter if desired; this is recommended only for advanced users.",
+            "value": "q",
+            "type": "text",
+			"dependencies": [{
+				"field": "search",
+				"value": "true"
             }]
         },
 
@@ -521,6 +562,18 @@
 			"label": "Facebook",
 			"group": "Footer",
 			"placeholder": "Please enter your Facebook URL",
+			"value": "",
+			"type": "text",
+			"dependencies": [{
+				"field": "socialButtons",
+				"value": "true"
+			}]
+		},
+		{
+			"name": "socialTwitter",
+			"label": "Twitter",
+			"group": "Footer",
+			"placeholder": "Please enter your Twitter URL",
 			"value": "",
 			"type": "text",
 			"dependencies": [{

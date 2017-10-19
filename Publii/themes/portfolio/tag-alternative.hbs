@@ -2,15 +2,18 @@
 <body>
 	{{{@bodyCustomCode}}}
     <div class="container">
-        <header class="js-top">
+        <header class="js-top">            
             <a class="logo" href="{{@website.url}}">
-                {{#if @website.logo}}
-                    <img src="{{@website.logo}}" alt="{{@website.name}}">
-                {{else}}
-                    {{@website.name}}
-                {{/if}}
-            </a>
-            {{> menu menus.mainMenu}}
+                    {{#if @website.logo}}
+                        <img src="{{@website.logo}}" alt="{{@website.name}}">
+                    {{else}}
+                        {{@website.name}}
+                    {{/if}}
+             </a>
+			 <div class="top">
+                {{> menu menus.mainMenu}}
+                {{> search}}
+            </div>
         </header>
         <main>
             {{#if @config.custom.heroTag}}

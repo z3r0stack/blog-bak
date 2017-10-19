@@ -1,13 +1,23 @@
 {
 	"name": "Mercury",
-	"version": "1.5.1.0",
+	"version": "1.6.3.0",
 	"author": "TidyCustoms <https://tidycustoms.net/>",
 	"menus": {
 		"mainMenu": "Main menu"
 	},
-	 "renderer": {
-        "relatedPostsNumber": 3
-    },
+	"renderer": {
+		"relatedPostsNumber": 3,
+		"renderRelatedPosts": true,
+		"renderSimilarPosts": false,
+		"renderPrevNextPosts": true,
+		"createContentStructure": false,
+		"createSearchPage": true,
+		"create404page": true,
+		"customHTML": {
+			"beforePost": "Before every post",
+			"afterPost": "After every post"
+		}
+	},
 	"config": [
 
 		{
@@ -262,7 +272,7 @@
 					"value": "post__image--full"
                 }]
         },
-		
+
 		{
 			"name": "primaryColor",
 			"label": "Primary color",
@@ -385,6 +395,38 @@
         },
 
 		{
+			"name": "search",
+			"label": "Search",
+			"group": "Search",
+			"value": true,
+			"type": "checkbox"
+        },
+		{
+			"name": "searchId",
+			"group": "Search",
+			"label": "Google Custom Search Id",
+			"note": "A search ID is required for search functionality, which uses Google Custom Search. Learn how to configure it here: <a href='https://getpublii.com/docs/search-configuration.html' target='_blank'>https://www.getpublii.com/docs/...</a>",
+			"value": "",
+			"type": "text",
+			"dependencies": [{
+				"field": "search",
+				"value": "true"
+            }]
+        },
+		{
+			"name": "searchParam",
+			"group": "Search",
+			"label": "Search parameter",
+			"note": "You can change the default \"q\" search parameter if desired; this is recommended only for advanced users.",
+			"value": "q",
+			"type": "text",
+			"dependencies": [{
+				"field": "search",
+				"value": "true"
+            }]
+        },
+
+		{
 			"name": "textHero",
 			"label": "Hero text",
 			"group": "Hero section",
@@ -431,7 +473,7 @@
 				"value": "grid"
             }]
         },
-		
+
 		{
 			"name": "shareFacebook",
 			"group": "Share Buttons",
@@ -448,10 +490,10 @@
 		},
 		{
 			"name": "shareTwitterName",
-			"group": "Share Buttons",			
-			"note": "Enter your Twitter account's handle here; it will be used when the Twitter share button is clicked on your site e.g. 'via @TwitterHandle'. If left blank, the default username of @SiteName will be used",	
+			"group": "Share Buttons",
+			"note": "Enter your Twitter account's handle here; it will be used when the Twitter share button is clicked on your site e.g. 'via @TwitterHandle'. If left blank, the default username of @SiteName will be used",
 			"value": "",
-			"type": "text",		
+			"type": "text",
 			"dependencies": [{
 				"field": "shareTwitter",
 				"value": "true"
@@ -492,7 +534,7 @@
 			"value": true,
 			"type": "checkbox"
 		},
-		
+
 		{
 			"name": "commentDisqusShortname",
 			"label": "Disqus shortname",
@@ -502,7 +544,7 @@
 			"value": "",
 			"type": "text"
         },
-		
+
 		{
 			"name": "copyrightText",
 			"label": "Copyright text",

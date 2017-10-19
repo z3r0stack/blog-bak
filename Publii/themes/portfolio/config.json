@@ -1,9 +1,20 @@
 {
 	"name": "Portfolio",
-	"version": "1.0.2.0",
+	"version": "1.1.4.0",
 	"author": "TidyCustoms <https://tidycustoms.net/>",
 	"menus": {
 		"mainMenu": "Main menu"
+	},
+	"renderer": {
+		"renderRelatedPosts": false,
+		"renderSimilarPosts": false,
+		"renderPrevNextPosts": false,
+		"createContentStructure": false,
+		"create404page": true,
+		"createSearchPage": true,
+		"customHTML": {             
+             "afterPost": "After every post"			 
+         }
 	},
 	"config": [
 
@@ -117,7 +128,7 @@
 			"note": "Define which posts your slideshow should highlight. <b>All posts</b> displays the newest articles from all categories. <b>Featured posts</b> displays only posts that have been marked as <b>Featured</b> in the post edit screen to allow for fine-tuning of your slideshow content.",
 			"value": "",
 			"type": "select",
-			"options": [				
+			"options": [
 				{
 					"label": "All posts",
 					"value": "all"
@@ -128,7 +139,7 @@
 					"value": "featured"
 
                 }]
-        },		
+        },
 		{
 			"name": "sliderAnimationSpeed",
 			"label": "Slides animation speed",
@@ -154,7 +165,7 @@
 
                 },
 				{
-					"label": "linear",					
+					"label": "linear",
 					"value": "linear"
 
                 },
@@ -172,14 +183,14 @@
 					"label": "ease-out",
 					"value": "ease-out"
 
-                },				
+                },
 				{
 					"label": "ease-in-out",
 					"value": "ease-in-out"
 
                 }]
 
-		}, 
+		},
 		{
 			"name": "separator",
 			"type": "separator",
@@ -254,7 +265,7 @@
 				"value": "true"
 			}]
 
-		},		
+		},
 		{
 			"name": "separator",
 			"type": "separator",
@@ -512,6 +523,38 @@
 			"dependencies": [{
 				"field": "submenu",
 				"value": "custom"
+            }]
+        },
+
+		{
+			"name": "search",
+			"label": "Search",
+			"group": "Search",
+			"value": true,
+			"type": "checkbox"
+        },
+		{
+			"name": "searchId",
+			"group": "Search",
+			"label": "Google Custom Search Id",
+			"note": "A search ID is required for search functionality, which uses Google Custom Search. Learn how to configure it here: <a href='https://getpublii.com/docs/search-configuration.html' target='_blank'>https://www.getpublii.com/docs/...</a>",
+			"value": "",
+			"type": "text",
+			"dependencies": [{
+				"field": "search",
+				"value": "true"
+            }]
+        },
+		{
+			"name": "searchParam",
+			"group": "Search",
+			"label": "Search parameter",
+			"note": "You can change the default \"q\" search parameter if desired; this is recommended only for advanced users.",
+			"value": "q",
+			"type": "text",
+			"dependencies": [{
+				"field": "search",
+				"value": "true"
             }]
         },
 
@@ -957,7 +1000,7 @@
 					"post": "(max-width: 1600px) 100vw, 1600px",
 					"amp": "(max-width: 768px) 100vw, 768px",
 					"slider": "(max-width: 56.1875em) 100vw, 60vw"
-					
+
 				},
 				"dimensions": {
 					"xs": {
@@ -995,7 +1038,7 @@
 						"width": 2560,
 						"height": "auto",
 						"group": "post,slider"
-					}					
+					}
 				}
 			}
 

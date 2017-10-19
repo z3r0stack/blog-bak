@@ -27,5 +27,11 @@
 	"shared": {
 		"menu": "Menu",
 		"publishedBy": "by"
+	},
+	"error": {
+		"404": "404",
+		"pageNotFound": "Page not found.",
+		"message1": "Ooops, something went wrong! ",
+		"message2": "The page you were looking for appears to have been moved, deleted or does not exist. You could go back to where you were or head straight to our home page."
 	}
 }

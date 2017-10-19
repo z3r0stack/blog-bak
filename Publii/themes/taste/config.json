@@ -1,13 +1,23 @@
 {
 	"name": "Taste",
-	"version": "1.4.1.0",
+	"version": "1.5.3.0",
 	"author": "TidyCustoms <bob@tidycustoms.net>",
 	"menus": {
 		"mainMenu": "Main menu"
 	},
 	"renderer": {
-        "relatedPostsNumber": 3
-    },
+		"relatedPostsNumber": 3,
+		"renderRelatedPosts": true,
+		"renderSimilarPosts": false,
+		"renderPrevNextPosts": true,
+		"createContentStructure": false,
+		"createSearchPage": true,
+		"create404page": true,
+		"customHTML": {
+			"beforePost": "Before every post",
+			"afterPost": "After every post"
+		}
+	},
 	"config": [
 
 		{
@@ -167,7 +177,7 @@
 
 			}]
 		},
-		
+
 		{
 			"name": "imageEffectsHover",
 			"group": "Image effects",
@@ -364,6 +374,39 @@
 				"value": "custom"
             }]
         },
+
+		{
+			"name": "search",
+			"label": "Search",
+			"group": "Search",
+			"value": true,
+			"type": "checkbox"
+        },
+		{
+			"name": "searchId",
+			"group": "Search",
+			"label": "Google Custom Search Id",
+			"note": "A search ID is required for search functionality, which uses Google Custom Search. Learn how to configure it here: <a href='https://getpublii.com/docs/search-configuration.html' target='_blank'>https://www.getpublii.com/docs/...</a>",
+			"value": "",
+			"type": "text",
+			"dependencies": [{
+				"field": "search",
+				"value": "true"
+            }]
+        },
+		{
+			"name": "searchParam",
+			"group": "Search",
+			"label": "Search parameter",
+			"note": "You can change the default \"q\" search parameter if desired; this is recommended only for advanced users.",
+			"value": "q",
+			"type": "text",
+			"dependencies": [{
+				"field": "search",
+				"value": "true"
+            }]
+        },
+
 		{
 			"name": "textHero",
 			"label": "Hero text",
@@ -371,7 +414,7 @@
 			"value": "<p> Your Kitchen Stories. </p><h1> The food blog </h1>",
 			"type": "wysiwyg"
 		},
-		
+
 		{
 			"name": "shareFacebook",
 			"group": "Share Buttons",
@@ -658,7 +701,7 @@
 			"name": "displayCategoryName",
 			"label": "Display tag name",
 			"note": "Enable/Disable tag name above post title",
-			"value": 1,	
+			"value": 1,
 			"type": "select",
 			"options": [
 				{
@@ -703,7 +746,7 @@
                 }
             ]
         },
-				{
+		{
 			"name": "displayLastUpdatedDate",
 			"label": "Display last updated date",
 			"value": 1,
@@ -750,7 +793,7 @@
 					"value": 0
                 }
             ]
-        },		
+        },
 
 		{
 			"name": "displayAuthorBio",
@@ -784,7 +827,7 @@
                 }
             ]
         },
-		
+
 		{
 			"name": "displayRelatedPosts",
 			"label": "Display related posts",
@@ -815,7 +858,7 @@
 					"label": "Disabled",
 					"value": 0
                 }
-            ] 
+            ]
         }
     ],
 	"files": {

@@ -1,16 +1,19 @@
 {{> head}}
 <body>
-	{{{@bodyCustomCode}}}
+    {{{@bodyCustomCode}}}
     <div class="container">
         <header class="js-top is-sticky">
-            <a class="logo" href="{{@website.url}}">
-                {{#if @website.logo}}
-                    <img src="{{@website.logo}}" alt="{{@website.name}}">
-                {{else}}
-                    {{@website.name}}
-                {{/if}}
-            </a>
-            {{> menu menus.mainMenu}}
+              <a class="logo" href="{{@website.url}}">
+                    {{#if @website.logo}}
+                        <img src="{{@website.logo}}" alt="{{@website.name}}">
+                    {{else}}
+                        {{@website.name}}
+                    {{/if}}
+             </a>
+			 <div class="top">
+                {{> menu menus.mainMenu}}
+                {{> search}}
+            </div>
         </header>
         <main>
             <section class="hero hero--author">
@@ -59,7 +62,7 @@
                                             sizes="{{sizes.post}}"
                                             srcset="{{srcset.post}}"
                                             alt="{{alt}}">
-									</a>
+                                    </a>
                                 </figure>
                             {{/if}}
                         {{/featuredImage}}

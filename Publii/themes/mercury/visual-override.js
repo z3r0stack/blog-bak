@@ -176,8 +176,8 @@ if(params.linkColorMenu !== '#111111') {
 
 if(params.linkHoverColorMenu !== '#ff80ab') {
         output += `
-.navbar__menu li a:hover,
-.navbar__menu li span:hover {
+.navbar__menu li a:hover:not(span),
+ .navbar__menu li span:hover:not(span) {
    color: ${params.linkHoverColorMenu};
   }`;
 }
